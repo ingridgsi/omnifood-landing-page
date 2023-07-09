@@ -1,0 +1,300 @@
+/* 
+---- 01 TYPOGRAPHY SYSTEM ----
+
+FONT SIZE SYSTEM (px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- FONT WEIGHTS:
+Default:    400
+Medium:    500
+Semi-bold: 600
+Bold:      700
+
+- LINE HEIGHT:
+Default:           1
+Small:             1.5
+Medium:            1.2
+Paragraph default: 1.6
+
+- LETTER SPACING:
+-0.5px
+0.75px
+
+
+---- 02 COLORS ----  
+Primary: 
+- #e67e22
+
+Tints:
+- #fdf2e9
+- #fae5d3
+- #94d82d
+- #ffd43b 
+- #eb984e
+
+Shades:
+- #cf711f;
+- #45260a
+
+Greys:
+- #888 
+- #767676 -> lightest grey allowed on #fff
+- #555
+- #333
+- #6f6f6f -> lightest grey allowed on #fdf2e9
+
+      
+---- 05 SHADOWS ----
+
+box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+
+---- 06 BORDER RADIOS ----
+Default: 9px
+- 11px
+
+---- 07 WHITESPACE ----
+
+---- - SPACING SYSTEM (px) ----
+2 / 4 / 8 / 12 / 16 / 24 / 32 /48 / 64 / 80 / 96 / 128   
+
+*/
+
+/* -> scroll-behavior: smooth; <- When clicking on the section it will make the scroll smooth */
+html {
+  /* font-size: 10px; */
+  /* this calculation comes from: 10px/16px (the default) = 0.625 = 62.5% */
+  font-size: 62.5%;
+  overflow-x: hidden;
+
+  /* scroll-behavior: smooth; */
+}
+
+* {
+  /* m0+p0+bxz */
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* -> font-family: "Rubik", sans-serif; the Rubik is the font got on google fonts and placed on th HTML file before the css link. The "Rubik"is indicated first to be the main font of the website, however, in case the user's browser is not able to load, the sans-serif will take place= <- */
+body {
+  /* max-width: 130rem;
+  margin: 0 auto; */
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  overflow-x: hidden;
+}
+
+/**********************************/
+/*GENERAL REUSABLE COMPONENTS */
+/**********************************/
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+/* REUSABLE GRID */
+/* -> grid-template-columns: repeat(2, 1fr);<- repeat is to specify that we want 2 columns both with 1fr, instead of write (2, 1fr 1fr) */
+/* To make it reusable we need to add the additional class    ".grid--2-cols" to it section*/
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+/* this property apply the margin on on the last grid of each DIV inside the same ***section** */
+.grid:last-child {
+  margin-bottom: 0;
+}
+
+/* if the grid inside a section is not the last child, than apply 9.6 rem on the margin bottom, otherwise it'll be 0 */
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.heading-secundary,
+.heading-secundary,
+.heading-terciary {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+/* ->letter-spacing: -0.5px;<- is supposed to gather the letter and improve the user experience. */
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secundary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-terciary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+/* -> display: inline-block;<-
+  -> padding: 1.6rem 3.2rem;<- 
+  to add padding in <a> we need first to change the display into inline block */
+/* -> transition: background-color 1s; <- 
+this property allows us to create an animation to change the values between 2 states */
+/*-> transition: background-color 1s; should always be applied in the original <a> class (btn not btn--full) <- */
+
+.btn,
+.btn:link,
+.btn:visited {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+  transition: all 0.3s;
+  /* Only necessary for btn <button> which is not <a> link */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+/* -> box-shadow: inset 0 0 0 3px #fff;<- 
+we use this trick to create a border inside the <a> or a button in order to not cause external effect and overlay the button */
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* -> align-self: end; <-  will change the size of the button that it's occupying the entire grid and it'll make its size become similar to the the filds of the form. */
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+/* border-bottom: 1px solid currentColor; this is useful to set the same color above and in case we need to change, the change will happen in only one property, in this case, "color" */
+/*   display: inline-block; because <a> is a in line element. in order to apply paddings and margins we need to change into inline-block */
+/* -> border-bottom: 1px solid currentColor;<- The text decoration is not always used, but it can be replaced with a nicer visibility applying border-bottom: */
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+/* -> border-bottom: 1px solid transparent; <- will remove the bottom line */
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+/* Focus property is meant to create a border around the clickable element and it's mandatory for accessibility */
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+/* HELPER/SETTINGS CLASSES */
+
+/* for this <a> class, we don't need to apply LVHA because it's a unique property. */
+.margin-righr-sm {
+  margin-right: 1.6rem !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+
+strong {
+  font-weight: 500;
+}
